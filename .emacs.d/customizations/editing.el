@@ -18,8 +18,16 @@
 ;; Highlight current line
 (global-hl-line-mode 1)
 
-;; Make whitespace visible
-(whitespace-mode 1)
+;; Always make whitespace visible
+(define-globalized-minor-mode 
+  global-whitespace-mode 
+  whitespace-mode 
+  (lambda () (whitespace-mode 1)))
+(global-whitespace-mode 1)
+
+;; Always show 80 column rule
+(define-globalized-minor-mode global-fci-mode fci-mode (lambda () (fci-mode 1)))
+(global-fci-mode 1)
 
 ;; Interactive search key bindings. By default, C-s runs
 ;; isearch-forward, so this swaps the bindings.
