@@ -123,6 +123,7 @@ bindsym $mod+Shift+0 move container to workspace 10
 #assign [class="Gnome-terminal"] $ws1
 assign [class="Firefox"] $ws2
 assign [class="jetbrains-phpstorm"] $ws3
+assign [class="Emacs"] $ws3
 assign [class="Slack"] $ws4
 assign [class="Nautilus"] $ws5
 
