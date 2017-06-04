@@ -312,8 +312,18 @@ layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
+
+  ;; Always start fci-mode
   (define-globalized-minor-mode global-fci-mode fci-mode (lambda () (fci-mode 1)))
-  (global-fci-mode 1))
+  (global-fci-mode 1)
+  
+  ;; Set up slime
+  (setq inferior-lisp-program "/usr/bin/sbcl")
+  (add-to-list 'load-path "/usr/share/emacs/site-lisp/slime/")
+  (require 'slime)
+  (slime-setup '(slime-fancy))
+
+  )
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
