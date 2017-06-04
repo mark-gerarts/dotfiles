@@ -25,6 +25,9 @@
   (lambda () (whitespace-mode 1)))
 (global-whitespace-mode 1)
 
+;; FCI defaults to 70, so let's change it here
+(setq fci-rule-column 80)
+
 ;; Always show 80 column rule
 (define-globalized-minor-mode global-fci-mode fci-mode (lambda () (fci-mode 1)))
 (global-fci-mode 1)
