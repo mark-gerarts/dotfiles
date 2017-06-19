@@ -249,3 +249,4 @@ bindsym XF86AudioPrev exec playerctl previous
 
 # Dual monitor
 bindsym $mod+n exec ~/.cycle-workspace.py
+exec_always xmodmap ~/.Xmodmap
