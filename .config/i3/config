@@ -167,7 +167,7 @@ bindsym $mod+r mode "resize"
 #
 
 # Open files
-bindsym $mod+e exec nautilus
+bindsym $mod+e workspace $ws5; exec nautilus
 bindsym $mod+t layout toggle split
 
 # Set wallpaper
