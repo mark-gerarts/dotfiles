@@ -47,7 +47,9 @@ values."
      syntax-checking
      version-control
      common-lisp
-     )
+     haskell
+     sql
+     html)
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
