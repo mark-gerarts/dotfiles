@@ -316,6 +316,9 @@ you should place your code here."
   (add-hook 'org-mode-hook 'turn-off-fci-mode 'append)
 
   (setq inferior-lisp-program "/usr/bin/sbcl")
+
+  ;; Replace highlighted text when typing.
+  (delete-selection-mode 1)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
