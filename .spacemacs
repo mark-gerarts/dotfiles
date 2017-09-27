@@ -40,6 +40,7 @@ values."
      javascript
      markdown
      helm
+     python
      auto-completion
      emacs-lisp
      git
