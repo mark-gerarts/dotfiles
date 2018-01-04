@@ -114,5 +114,7 @@ fi
 
 # Add globally installed composer packages to path
 export PATH="$HOME/config/composer/vendor:$PATH"
+export VISUAL="vim"
+export EDITOR="vim"
 
 # eval $(thefuck --alias)
