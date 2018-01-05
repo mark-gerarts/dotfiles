@@ -37,6 +37,7 @@ alias gls="git log --graph --abbrev-commit --decorate --date=relative --format=f
 # Example: diffcount develop...feature/branch
 alias diffcount="git rev-list --left-right --count"
 alias git-latest-tag="git describe --abbrev=0 --tags"
+alias leaderboard="git shortlog -sn"
 
 #
 # SSH
