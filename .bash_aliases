@@ -11,8 +11,6 @@ alias cd..="cd .."
 alias fhere="find . -name"
 alias psg="ps aux | grep -v grep | grep -i -e VSZ -e"
 alias prettyjson="python -m json.tool"
-alias emacs="emacs -nw"
-alias emacsw="emacs"
 
 # xclip
 alias cclip='xclip -selection clipboard'
