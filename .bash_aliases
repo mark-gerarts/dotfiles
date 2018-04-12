@@ -11,6 +11,7 @@ alias cd..="cd .."
 alias fhere="find . -name"
 alias psg="ps aux | grep -v grep | grep -i -e VSZ -e"
 alias prettyjson="python -m json.tool"
+alias yt3="youtube-dl --extract-audio --audio-format mp3 --output \"%(title)s.%(ext)s\""
 
 # xclip
 alias cclip='xclip -selection clipboard'
