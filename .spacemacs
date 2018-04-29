@@ -317,6 +317,7 @@ you should place your code here."
   (add-hook 'prog-mode-hook 'turn-on-fci-mode)
   (add-hook 'text-mode-hook 'turn-on-fci-mode)
   (add-hook 'org-mode-hook 'turn-off-fci-mode 'append)
+  (add-hook 'lisp-mode 'enable-paredit-mode)
 
   (setq inferior-lisp-program "/usr/bin/sbcl")
 
