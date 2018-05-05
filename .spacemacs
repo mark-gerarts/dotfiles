@@ -52,7 +52,8 @@ values."
      clojure
      sql
      html
-     ranger)
+     ranger
+     plantuml)
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
@@ -319,6 +320,9 @@ you should place your code here."
   (add-hook 'org-mode-hook 'turn-off-fci-mode 'append)
   (add-hook 'lisp-mode 'enable-paredit-mode)
 
+  
+  ;; org-mode integration.
+  (setq org-plantuml-jar-path "~/plantuml.jar")
   (setq inferior-lisp-program "/usr/bin/sbcl")
 
   ;; Replace highlighted text when typing.
