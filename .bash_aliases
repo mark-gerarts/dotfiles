@@ -60,3 +60,7 @@ alias phpspec="vendor/bin/phpspec"
 #
 alias drupal="vendor/bin/drupal"
 
+#
+# Lisp
+#
+alias sbcl ="rlwrap sbcl"
