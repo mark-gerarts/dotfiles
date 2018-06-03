@@ -327,6 +327,12 @@ you should place your code here."
 
   ;; Replace highlighted text when typing.
   (delete-selection-mode 1)
+  
+    ;; Disable org-mode security prompt for a whitelist of languages.
+  (defun org-mode-security-prompt-whitelist (lang body)
+    (let ((whitelist '("plantuml")))
+      (not (member lang whitelist))))
+  (setq org-confirm-babel-evaluate 'org-mode-security-prompt-whitelist)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
