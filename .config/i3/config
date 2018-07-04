@@ -170,8 +170,12 @@ bindsym $mod+r mode "resize"
 bindsym $mod+e workspace $ws5; exec nautilus
 bindsym $mod+t layout toggle split
 
-# Start some services
+# Start redshift
 exec --no-startup-id redshift-gtk
+
+# Tweak touchpad
+exec ~/.inverse-scroll.sh
+exec ~/.tap-to-click.sh
 
 # Set wallpaper
 exec_always feh --randomize --bg-scale ~/Pictures/Wallpapers/*
