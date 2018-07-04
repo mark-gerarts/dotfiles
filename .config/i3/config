@@ -246,9 +246,13 @@ bindsym XF86AudioPause exec playerctl pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
-
 # Dual monitor
 bindsym $mod+n exec ~/.cycle-workspace.py
 exec_always xmodmap ~/.Xmodmap
 #exec_always /home/mark/arandr.sh
 #exec_always --no-startup-id xrandr --output DP-1 --auto --left-of eDP-1
+
+# Remove title bar
+for_window [class="^.*"] border pixel 1
+new_window 1pixel
+
