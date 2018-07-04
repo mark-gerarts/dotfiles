@@ -170,6 +170,9 @@ bindsym $mod+r mode "resize"
 bindsym $mod+e workspace $ws5; exec nautilus
 bindsym $mod+t layout toggle split
 
+# Start some services
+exec --no-startup-id redshift-gtk
+
 # Set wallpaper
 exec_always feh --randomize --bg-scale ~/Pictures/Wallpapers/*
 
