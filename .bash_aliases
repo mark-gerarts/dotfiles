@@ -54,6 +54,7 @@ alias ssh-bender="ssh mgerarts@bender.nascomdev.be"
 alias bc="bin/console"
 alias bcc="bin/console cache:clear"
 alias phpspec="vendor/bin/phpspec"
+alias phpunit="vendor/bin/phpunit"
 
 #
 # Drupal
