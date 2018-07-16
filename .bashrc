@@ -117,4 +117,9 @@ export PATH="$HOME/config/composer/vendor:$PATH"
 export VISUAL="vim"
 export EDITOR="vim"
 
+# Haskell
+if [ -d ~/.cabal/bin ]; then
+  export PATH="$PATH:~/.cabal/bin"
+fi
+
 # eval $(thefuck --alias)
