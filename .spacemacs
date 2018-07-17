@@ -48,7 +48,7 @@ values."
      syntax-checking
      version-control
      common-lisp
-     haskell
+     (haskell :variables haskell-enable-hindent-style "fundamental")
      clojure
      sql
      html
