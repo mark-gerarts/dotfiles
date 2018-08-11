@@ -333,6 +333,22 @@ you should place your code here."
     (let ((whitelist '("plantuml")))
       (not (member lang whitelist))))
   (setq org-confirm-babel-evaluate 'org-mode-security-prompt-whitelist)
+  
+  
+  ;; Fix haskell with ghci 8.2.2.
+  ;; @see https://github.com/haskell/haskell-mode/issues/1553
+  (setq haskell-process-args-ghci
+        '("-ferror-spans" "-fshow-loaded-modules"))
+
+  (setq haskell-process-args-cabal-repl
+        '("--ghc-options=-ferror-spans -fshow-loaded-modules"))
+
+  (setq haskell-process-args-stack-ghci
+        '("--ghci-options=-ferror-spans -fshow-loaded-modules"
+          "--no-build" "--no-load"))
+
+  (setq haskell-process-args-cabal-new-repl
+        '("--ghc-options=-ferror-spans -fshow-loaded-modules"))
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
