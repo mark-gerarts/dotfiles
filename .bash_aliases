@@ -65,3 +65,8 @@ alias drupal="vendor/bin/drupal"
 # Lisp
 #
 alias sbcl ="rlwrap sbcl"
+
+#
+# Docker
+#
+alias docker-composer="docker-compose"
