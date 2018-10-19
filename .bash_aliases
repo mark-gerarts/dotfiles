@@ -1,4 +1,10 @@
 #
+# Docker
+#
+alias docker-composer="docker-compose"
+alias dcup="docker-compose up -d"
+alias dcstop="docker-compose stop"
+#
 # General
 #
 
