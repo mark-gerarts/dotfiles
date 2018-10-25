@@ -4,6 +4,8 @@
 alias docker-composer="docker-compose"
 alias dcup="docker-compose up -d"
 alias dcstop="docker-compose stop"
+alias dcexec="docker exec -it --user=$(id -u):$(id -g) -w /var/www/html"
+
 #
 # General
 #
