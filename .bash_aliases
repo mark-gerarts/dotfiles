@@ -40,7 +40,11 @@ alias gti="git"
 alias gpr="git pull --rebase"
 alias gmn="git merge --no-ff"
 alias gsp="git stash pop"
-alias gls="git log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(blue)- [%an]%C(reset)%C(bold yellow)%d%C(reset)'"
+# git log graph
+alias glg="git log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(blue)- [%an]%C(reset)%C(bold yellow)%d%C(reset)'"
+# glg for all branches
+alias glga="git log --branches --remotes --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(blue)- [%an]%C(reset)%C(bold yellow)%d%C(reset)'"
+alias gls="glg"
 # Example: diffcount develop...feature/branch
 alias diffcount="git rev-list --left-right --count"
 alias git-latest-tag="git describe --abbrev=0 --tags"
