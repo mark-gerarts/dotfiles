@@ -119,7 +119,7 @@ export EDITOR="vim"
 
 # Haskell
 if [ -d ~/.cabal/bin ]; then
-  export PATH="$PATH:~/.cabal/bin"
+  export PATH="$PATH:~/.cabal/bin:~/.composer/vendor/bin"
 fi
 
 # eval $(thefuck --alias)
