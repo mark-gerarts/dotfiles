@@ -68,6 +68,7 @@ alias bcc="bin/console cache:clear"
 alias phpspec="vendor/bin/phpspec"
 # Copies a regex to the clipboard that can be used to search a translation file for (mostly) untranslated strings.
 alias untranslated="echo -n \"<target.*>[^\s]*\.[^\s]*</target>\" | cclip | echo \"Copied to clipboard!\""
+alias untranslated-csv="echo -n \";(\\\"|)[^\s]*\.[^\s]*\" | cclip | echo \"Copied to clipboard!\""
 
 #
 # Drupal
