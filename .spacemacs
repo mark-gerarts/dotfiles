@@ -353,5 +353,10 @@ you should place your code here."
         '("--ghc-options=-ferror-spans -fshow-loaded-modules"))
   )
 
+  ;; Open PDF in emacs whan using latex-view
+  (setq TeX-view-program-selection '((output-pdf "PDF Tools"))
+      TeX-view-program-list '(("PDF Tools" TeX-pdf-tools-sync-view))
+      TeX-source-correlate-start-server t)
+
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
