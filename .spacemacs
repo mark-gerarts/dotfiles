@@ -52,6 +52,7 @@ values."
      clojure
      sql
      html
+     latex
      ranger
      plantuml)
    ;; List of additional packages that will be installed without being
