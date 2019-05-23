@@ -53,6 +53,7 @@ values."
      sql
      html
      latex
+     pdf-tools
      ranger
      plantuml)
    ;; List of additional packages that will be installed without being
