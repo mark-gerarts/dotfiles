@@ -1,0 +1,12 @@
+{
+    "php.suggest.basic": false,
+    "editor.quickSuggestions": { "comments": true },
+    "emmet.includeLanguages": { "twig": "html" },
+    "intelephense.files.associations": [
+        "*.php",
+        "*.phtml",
+        "*.inc",
+        "*.module"
+      ],
+    "files.trimTrailingWhitespace": true
+}
