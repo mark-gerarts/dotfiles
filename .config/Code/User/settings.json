@@ -12,6 +12,7 @@
 
     "files.trimTrailingWhitespace": true,
     "files.insertFinalNewline": true,
+    "files.trimFinalNewlines": true,
 
     "editor.quickSuggestions": { "comments": true },
     "editor.fontSize": 17,
