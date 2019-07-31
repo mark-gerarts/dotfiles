@@ -1,12 +1,30 @@
 {
     "php.suggest.basic": false,
-    "editor.quickSuggestions": { "comments": true },
+
     "emmet.includeLanguages": { "twig": "html" },
+
     "intelephense.files.associations": [
         "*.php",
         "*.phtml",
         "*.inc",
         "*.module"
       ],
-    "files.trimTrailingWhitespace": true
+
+    "files.trimTrailingWhitespace": true,
+
+    "editor.quickSuggestions": { "comments": true },
+    "editor.fontSize": 17,
+    "editor.fontFamily": "'Fira Code', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
+    "editor.renderWhitespace": "all",
+    "editor.cursorStyle": "block",
+    "editor.wordWrap": "on",
+    "editor.rulers": [
+      80
+    ],
+
+    "workbench.colorTheme": "One Dark Pro Bold",
+
+    "languageServerHaskell.hlintOn": true,
+    "languageServerHaskell.maxNumberOfProblems": 100,
+    "languageServerHaskell.enableHIE": true
 }
