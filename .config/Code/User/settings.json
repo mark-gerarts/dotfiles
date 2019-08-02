@@ -13,6 +13,7 @@
     "files.trimTrailingWhitespace": true,
     "files.insertFinalNewline": true,
     "files.trimFinalNewlines": true,
+    "files.autoSave": "afterDelay",
 
     "editor.quickSuggestions": { "comments": true },
     "editor.fontSize": 17,
@@ -28,5 +29,6 @@
 
     "languageServerHaskell.hlintOn": true,
     "languageServerHaskell.maxNumberOfProblems": 100,
-    "languageServerHaskell.enableHIE": true
+    "languageServerHaskell.enableHIE": true,
+    "window.zoomLevel": 0
 }
