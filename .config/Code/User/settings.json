@@ -25,10 +25,12 @@
       80
     ],
 
-    "workbench.colorTheme": "One Dark Pro Bold",
-
     "languageServerHaskell.hlintOn": true,
     "languageServerHaskell.maxNumberOfProblems": 100,
     "languageServerHaskell.enableHIE": true,
-    "window.zoomLevel": 0
+    "window.zoomLevel": 0,
+    "editor.fontLigatures": true,
+    "workbench.colorTheme": "One Dark Pro",
+    "editor.minimap.enabled": false,
+    "latex-workshop.latex.recipe.default": "lastUsed"
 }

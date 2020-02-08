@@ -1,12 +1,14 @@
 alanz.vscode-hie-server
 bmewburn.vscode-intelephense-client
 DavidAnson.vscode-markdownlint
+James-Yu.latex-workshop
 justusadam.language-haskell
 lfs.vscode-emacs-friendly
 mvakula.vscode-purty
 nwolverson.ide-purescript
 nwolverson.language-purescript
+octref.vetur
 phproberto.vscode-php-getters-setters
 UCL.haskelly
 yzhang.markdown-all-in-one
-zhuangtongfa.Material-theme
+zhuangtongfa.material-theme
