@@ -1,4 +1,5 @@
 alanz.vscode-hie-server
+ban.spellright
 bmewburn.vscode-intelephense-client
 DavidAnson.vscode-markdownlint
 James-Yu.latex-workshop
@@ -9,6 +10,7 @@ nwolverson.ide-purescript
 nwolverson.language-purescript
 octref.vetur
 phproberto.vscode-php-getters-setters
+stkb.rewrap
 UCL.haskelly
 yzhang.markdown-all-in-one
 zhuangtongfa.material-theme
