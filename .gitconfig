@@ -9,4 +9,4 @@
 	editor = vim
 
 [tag]
-	sort = version:refname
+	sort = -version:refname
