@@ -15,11 +15,11 @@ $ cp .config/Code/User/* ~/.config/Code/User/
 Extensions are a bit trickier. They can be exported using `--list-extensions`:
 
 ```
-$ code --list-extension > ~/.config/Code/User/extensions.list
+$ code --list-extensions > ~/.config/Code/User/extensions.list
 ```
 
 They can then be imported using:
 
 ```
-cat extension.list | xargs -n 1 code --install-extension
+cat extensions.list | xargs -n 1 code --install-extension
 ```
