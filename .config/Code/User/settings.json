@@ -29,14 +29,21 @@
   "languageServerHaskell.enableHIE": true,
   "window.zoomLevel": 0,
   "editor.fontLigatures": true,
-  "workbench.colorTheme": "One Dark Pro",
+  "workbench.colorTheme": "Quiet Light",
   "editor.minimap.enabled": false,
   "latex-workshop.latex.recipe.default": "lastUsed",
   "latex-workshop.view.pdf.viewer": "tab",
   "rewrap.autoWrap.enabled": true,
   "latex-workshop.latex.autoBuild.run": "never",
-  "editor.formatOnSave": false,
+  "editor.formatOnSave": true,
   "[elm]": {
         "editor.formatOnSave": true
+    },
+    "files.associations": {
+      "*.icl": "clean"
+    },
+    "extensions.ignoreRecommendations": false,
+    "[haskell]": {
+      "editor.defaultFormatter": "sjurmillidahl.ormolu-vscode"
     }
 }
