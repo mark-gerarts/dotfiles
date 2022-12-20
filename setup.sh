@@ -34,7 +34,7 @@ then
     INSTALLED_EXTENSIONS=$(code --list-extensions)
     ALL_EXTENSIONS=$(cat $SCRIPT_DIR/.config/Code/User/extensions.list)
     EXTENSIONS_TO_INSTALL=$(comm -13 <(echo "$INSTALLED_EXTENSIONS") <(echo "$ALL_EXTENSIONS"))
-    echo "$EXTENSIONS_TO_INSTALL" | xargs -n 1 code --install-extension
+    [ ! -z "${EXTENSIONS_TO_INSTALL// }" ] && echo "$EXTENSIONS_TO_INSTALL" | xargs -n 1 code --install-extension
 
     # Update the extensions list if there are any extensions installed but not yet part of the repo.
     code --list-extensions > $SCRIPT_DIR/.config/Code/User/extensions.list
