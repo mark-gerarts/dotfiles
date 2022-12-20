@@ -28,6 +28,8 @@ ln -sf $SCRIPT_DIR/.pylintrc $HOME/.pylintrc
 
 ln -sf $SCRIPT_DIR/.vimrc $HOME/.vimrc
 
+ln -sf $SCRIPT_DIR/.sbclrc $HOME/.sbclrc
+
 if code -v &> /dev/null
 then
     # Get any extensions that are part of the repo but not yet installed, and install them.
