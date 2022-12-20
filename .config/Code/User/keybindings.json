@@ -1,0 +1,38 @@
+[
+  {
+    "command": "workbench.action.nextEditor",
+    "key": "alt+right"
+  },
+  {
+    "command": "workbench.action.previousEditor",
+    "key": "alt+left"
+  },
+  {
+    "command": "workbench.action.closeAllEditors",
+    "key": "ctrl+x ctrl+c"
+  },
+  {
+    "command": "-workbench.action.closeAllEditors",
+    "key": "ctrl+x ctrl+k"
+  },
+  {
+    "command": "editor.action.quickFix",
+    "key": "alt+enter",
+    "when": "editorHasCodeActionsProvider && editorTextFocus && !editorReadonly"
+  },
+  {
+    "command": "-editor.action.quickFix",
+    "key": "ctrl+.",
+    "when": "editorHasCodeActionsProvider && editorTextFocus && !editorReadonly"
+  },
+  {
+    "command": "latex-workshop.build",
+    "key": "ctrl+alt+b",
+    "when": "editorLangId == 'latex'"
+  },
+  {
+    "key": "ctrl+;",
+    "command": "-editor.action.commentLine",
+    "when": "editorTextFocus && !editorReadonly"
+  }
+]
