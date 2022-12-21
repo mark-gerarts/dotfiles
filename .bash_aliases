@@ -27,6 +27,8 @@ alias reboot="sudo reboot"
 alias cclip="xclip -selection clipboard"
 alias psg="ps aux | grep -v grep | grep -i -e VSZ -e"
 
+alias sbcl="rlwrap sbcl"
+
 alias node-repl="noderepl"
 noderepl() {
     FILE_CONTENTS="$(< $1 )"
