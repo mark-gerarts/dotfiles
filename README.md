@@ -1,6 +1,6 @@
-# Ubuntu dotfiles setup
+# Dotfiles setup
 
-Dotfiles repo for my Ubuntu (i.e. work) machine. Usage:
+Dotfiles with included setup script. Usage:
 
 ```
 cd $HOME \
@@ -9,3 +9,5 @@ cd $HOME \
   && chmod +x setup.sh \
   && ./setup.sh
 ```
+
+Still needs some work to install required packages as well (e.g. emacs, rg, ...)

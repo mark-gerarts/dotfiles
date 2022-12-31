@@ -2,7 +2,11 @@
 
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 
-ln -sf $SCRIPT_DIR/.bash_aliases $HOME/.bash_aliases
+if cat /etc/issue | grep openSUSE > /dev/null; then
+  ln -sf $SCRIPT_DIR/.bash_aliases $HOME/.alias
+else
+  ln -sf $SCRIPT_DIR/.bash_aliases $HOME/.bash_aliases
+fi
 
 ln -sf $SCRIPT_DIR/.eslintrc.json $HOME/.eslintrc.json
 
@@ -22,6 +26,7 @@ ln -sf $SCRIPT_DIR/.gitconfig $HOME/.gitconfig
 [ ! -d "$HOME/.npm-packages" ] && mkdir $HOME/.npm-packages
 ln -sf $SCRIPT_DIR/.npmrc $HOME/.npmrc
 
+[ -d "$HOME/.scripts" ] && rm -r $HOME/.scripts
 ln -sf $SCRIPT_DIR/.scripts $HOME/.scripts
 
 ln -sf $SCRIPT_DIR/.pylintrc $HOME/.pylintrc
@@ -41,3 +46,6 @@ then
     # Update the extensions list if there are any extensions installed but not yet part of the repo.
     code --list-extensions > $SCRIPT_DIR/.config/Code/User/extensions.list
 fi
+
+[ -d "$HOME/.doom.d" ] && rm -r $HOME/.doom.d
+ln -s $SCRIPT_DIR/.doom.d $HOME/.doom.d
