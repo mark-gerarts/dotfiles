@@ -86,3 +86,6 @@
 ;; Auto indent lisp code on save
 (load! "indent-file.el")
 (add-hook 'after-save-hook #'indent-whole-buffer)
+
+;; Fixes because I can't type
+(map! "C-x C-o" #'other-window)
