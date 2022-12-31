@@ -145,3 +145,10 @@
             (my-delete-backward-word))))))
 (define-key global-map [remap backward-kill-word] #'my-backward-delete-word-on-this-line)
 (define-key global-map [remap kill-word] #'my-delete-forward-word)
+
+;; Treemacs
+(setq treemacs-width 25)
+
+;; Switch buffers using Alt+arrows
+(map! "M-<left>" #'switch-to-prev-buffer)
+(map! "M-<right>" #'switch-to-next-buffer)
