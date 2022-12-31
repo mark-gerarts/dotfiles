@@ -2,10 +2,39 @@
 
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 
+OS="debian"
 if cat /etc/issue | grep openSUSE > /dev/null; then
-  ln -sf $SCRIPT_DIR/.bash_aliases $HOME/.alias
+    OS="OpenSUSE"
+fi
+
+#
+# System packages
+#
+
+common_packages=("git" "ripgrep" "emacs" "docker" "docker-compose"
+    "docker-compose-switch" "sbcl" "rlwrap" "chromium" "password-store")
+os_specific_packages=("firefox")
+if [ $OS = "OpenSUSE" ]; then
+    os_specific_packages=("MozillaFirefox")
+fi
+packages=("${common_packages[@]}" "${os_specific_packages[@]}")
+
+for package in ${packages[@]}; do
+    if [ $OS = "OpenSUSE" ]; then
+        rpm -q $package > /dev/null || sudo zypper in --no-confirm --no-recommends $package
+    else
+        dpkg -l $package > /dev/null || sudo apt install -y $package
+    fi
+done
+
+#
+# Symlinks/dotfiles
+#
+
+if [ $OS = "OpenSUSE" ]; then
+    ln -sf $SCRIPT_DIR/.bash_aliases $HOME/.alias
 else
-  ln -sf $SCRIPT_DIR/.bash_aliases $HOME/.bash_aliases
+    ln -sf $SCRIPT_DIR/.bash_aliases $HOME/.bash_aliases
 fi
 
 ln -sf $SCRIPT_DIR/.eslintrc.json $HOME/.eslintrc.json
@@ -35,6 +64,10 @@ ln -sf $SCRIPT_DIR/.vimrc $HOME/.vimrc
 
 ln -sf $SCRIPT_DIR/.sbclrc $HOME/.sbclrc
 
+#
+# Setup VSCode extensions
+#
+
 if code -v &> /dev/null
 then
     # Get any extensions that are part of the repo but not yet installed, and install them.
@@ -47,5 +80,15 @@ then
     code --list-extensions > $SCRIPT_DIR/.config/Code/User/extensions.list
 fi
 
+#
+# Install Doom emacs if needed
+#
+
 [ -d "$HOME/.doom.d" ] && rm -r $HOME/.doom.d
 ln -s $SCRIPT_DIR/.doom.d $HOME/.doom.d
+
+if [ ! -f "$HOME/.emacs.d/bin/doom" ]
+then
+    git clone --depth 1 https://github.com/doomemacs/doomemacs $HOME/.emacs.d
+    $HOME/.emacs.d/bin/doom sync
+fi

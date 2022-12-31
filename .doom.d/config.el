@@ -77,8 +77,9 @@
 ;; they are implemented.
 
 ;; Sly setup
-(setq inferior-lisp-program "/usr/bin/sbcl")
+(setq inferior-lisp-program "sbcl")
 (map! "M-S-<return>" #'sly-eval-defun)
+(map! "M-<return>" #'sly-eval-defun)
 
 ;; Add colored parentheses
 (add-hook 'lisp-mode-hook #'rainbow-delimiters-mode)
