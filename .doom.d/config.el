@@ -88,5 +88,60 @@
 (load! "indent-file.el")
 (add-hook 'after-save-hook #'indent-whole-buffer)
 
+;; Overwrite selected text
+(delete-selection-mode 1)
+
 ;; Fixes because I can't type
 (map! "C-x C-o" #'other-window)
+
+;; Sane alt/ctrl+backspace behavior...
+;; https://gist.github.com/jclosure/d838a672ba77482f2dcc1fc4df3368de#file-emacs-el-L447
+(defun my-delete-backward-word ()
+  (interactive "*")
+  (push-mark)
+  (backward-word)
+  (delete-region (point) (mark)))
+
+(defun my-delete-forward-word ()
+  (interactive "*")
+  (push-mark)
+  (forward-word)
+  (delete-region (point) (mark)))
+
+(defun my-backward-kill-word-on-this-line ()
+  (interactive)
+  (let ((orig-point (point)))
+    (beginning-of-line)
+    (let ((beg-line-point (point)))
+      (goto-char orig-point)
+      (backward-word)
+      (let ((backward-word-point (point)))
+        ;; If the position of the beginning of the line is the same or
+        ;; before the previous word position, remove previous word
+        (goto-char orig-point)
+        (if (> beg-line-point backward-word-point)
+            (progn
+              (goto-char beg-line-point)
+              ;; delete whitespace and move to line above
+              (delete-indentation))
+          (backward-kill-word 1))))))
+
+(defun my-backward-delete-word-on-this-line ()
+  (interactive)
+  (let ((orig-point (point)))
+    (beginning-of-line)
+      (let ((beg-line-point (point)))
+        (goto-char orig-point)
+        (backward-word)
+        (let ((backward-word-point (point)))
+          ;; If the position of the beginning of the line is the same or
+          ;; before the previous word position, remove previous word
+          (goto-char orig-point)
+          (if (> beg-line-point backward-word-point)
+              (progn
+                (goto-char beg-line-point)
+                ;; delete whitespace and move to line above
+                (delete-indentation))
+            (my-delete-backward-word))))))
+(define-key global-map [remap backward-kill-word] #'my-backward-delete-word-on-this-line)
+(define-key global-map [remap kill-word] #'my-delete-forward-word)
