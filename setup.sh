@@ -11,11 +11,12 @@ fi
 # System packages
 #
 
-common_packages=("git" "ripgrep" "emacs" "docker" "docker-compose"
-    "docker-compose-switch" "sbcl" "rlwrap" "chromium" "password-store")
-os_specific_packages=("firefox")
+common_packages=("git" "ripgrep" "emacs" "docker" "docker-compose" "sbcl"
+    "rlwrap" "chromium")
+os_specific_packages=("firefox" "pass")
 if [ $OS = "OpenSUSE" ]; then
-    os_specific_packages=("MozillaFirefox")
+    os_specific_packages=("MozillaFirefox" "password-store"
+        "docker-compose-switch")
 fi
 packages=("${common_packages[@]}" "${os_specific_packages[@]}")
 
@@ -26,6 +27,15 @@ for package in ${packages[@]}; do
         dpkg -l $package > /dev/null || sudo apt install -y $package
     fi
 done
+
+#
+# System configuration
+#
+
+if [[ ! -f "/etc/sudoers.d/custom-sudoers" || $* == *--force* ]]; then
+    visudo -c -f $SCRIPT_DIR/etc/sudoers.d/custom-sudoers > /dev/null \
+        && sudo cp $SCRIPT_DIR/etc/sudoers.d/custom-sudoers /etc/sudoers.d/custom-sudoers
+fi
 
 #
 # Symlinks/dotfiles
