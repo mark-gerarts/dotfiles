@@ -2,7 +2,7 @@
 
 Dotfiles & system config with included setup script. Usage:
 
-```
+```sh
 cd $HOME \
   && git clone git@github.com-personal:mark-gerarts/dotfiles-ubuntu.git dotfiles \
   && cd dotfiles \

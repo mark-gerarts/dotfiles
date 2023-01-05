@@ -1,6 +1,7 @@
 amazonwebservices.aws-toolkit-vscode
 DavidAnson.vscode-markdownlint
 dbaeumer.vscode-eslint
+Gruntfuggly.todo-tree
 James-Yu.latex-workshop
 ms-azuretools.vscode-azurefunctions
 ms-azuretools.vscode-azureresourcegroups
@@ -17,6 +18,7 @@ ms-toolsai.vscode-jupyter-slideshow
 ms-vscode.azure-account
 rheller.alive
 stkb.rewrap
+timonwong.shellcheck
 tuttieee.emacs-mcx
 valentjn.vscode-ltex
 Vue.volar
