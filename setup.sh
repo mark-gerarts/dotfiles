@@ -33,7 +33,7 @@ done
 #
 
 if [[ ! -f "/etc/sudoers.d/custom-sudoers" || $* == *--force* ]]; then
-    visudo -c -f $SCRIPT_DIR/etc/sudoers.d/custom-sudoers > /dev/null \
+    sudo visudo -c -f $SCRIPT_DIR/etc/sudoers.d/custom-sudoers > /dev/null \
         && sudo cp $SCRIPT_DIR/etc/sudoers.d/custom-sudoers /etc/sudoers.d/custom-sudoers \
         && sudo chmod 440 /etc/sudoers.d/custom-sudoers
 fi
