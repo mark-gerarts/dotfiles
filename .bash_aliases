@@ -31,7 +31,7 @@ alias sbcl="rlwrap sbcl"
 
 alias node-repl="noderepl"
 noderepl() {
-    FILE_CONTENTS="$(< $1 )"
+    FILE_CONTENTS="$(< "$1" )"
     node -i -e "$FILE_CONTENTS"
 }
 

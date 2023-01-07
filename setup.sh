@@ -40,6 +40,10 @@ install_system_packages() {
             dpkg -l "$package" > /dev/null || sudo apt install -y "$package"
         fi
     done
+
+    [[ ! -d "$HOME/.nvm" ]] && curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
+    [[ ! -d "$HOME/.npm-packages" ]] && mkdir "$HOME/.npm-packages"
+    node -v &> /dev/null || (nvm install 18 && nvm use --delete-prefix 18)
 }
 
 configure_system() {
