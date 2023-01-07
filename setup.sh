@@ -42,7 +42,6 @@ install_system_packages() {
     done
 
     [[ ! -d "$HOME/.nvm" ]] && curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
-    [[ ! -d "$HOME/.npm-packages" ]] && mkdir "$HOME/.npm-packages"
     node -v &> /dev/null || (nvm install 18 && nvm use --delete-prefix 18)
 }
 
@@ -75,9 +74,6 @@ create_symlinks() {
     ln -sf "$SCRIPT_DIR/.config/bat/config" "$HOME/.config/bat/config"
 
     ln -sf "$SCRIPT_DIR/.gitconfig" "$HOME/.gitconfig"
-
-    [ ! -d "$HOME/.npm-packages" ] && mkdir "$HOME/.npm-packages"
-    ln -sf "$SCRIPT_DIR/.npmrc" "$HOME/.npmrc"
 
     [ -d "$HOME/.scripts" ] && rm -r "$HOME/.scripts"
     ln -sf "$SCRIPT_DIR/.scripts" "$HOME/.scripts"
