@@ -14,6 +14,9 @@
   "[javascript]": {
     "editor.tabSize": 2
   },
+  "[fsharp]": {
+    "editor.inlayHints.enabled": "offUnlessPressed"
+  },
   "debug.onTaskErrors": "showErrors",
   "editor.cursorStyle": "block",
   "editor.fontFamily": "'Fira Code', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
@@ -53,5 +56,8 @@
   "aws.telemetry": false,
   "python.formatting.provider": "black",
   "editor.formatOnSave": true,
-  "eslint.format.enable": true
+  "eslint.format.enable": true,
+  "FSharp.pipelineHints.enabled": false,
+  "FSharp.inlayHints.parameterNames": false,
+  "FSharp.inlayHints.disableLongTooltip": true
 }

@@ -58,5 +58,15 @@
   {
     "key": "shift shift",
     "command": "workbench.action.quickOpen"
+  },
+  {
+    "key": "shift+alt+enter",
+    "command": "fsi.SendSelection",
+    "when": "editorFocus && !findWidgetVisible && editorLangId == 'fsharp'"
+  },
+  {
+    "key": "alt+enter",
+    "command": "-fsi.SendSelection",
+    "when": "editorFocus && !findWidgetVisible && editorLangId == 'fsharp'"
   }
 ]
