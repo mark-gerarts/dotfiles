@@ -1,6 +1,4 @@
 "*":
-  "bracket-matcher":
-    autocompleteBrackets: false
   core:
     audioBeep: false
     disabledPackages: [

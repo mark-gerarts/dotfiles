@@ -54,5 +54,9 @@
     "key": "alt+enter",
     "command": "-calva.evaluateCurrentTopLevelForm",
     "when": "calva:connected && calva:keybindingsEnabled && editorTextFocus && editorLangId == 'clojure'"
+  },
+  {
+    "key": "shift shift",
+    "command": "workbench.action.quickOpen"
   }
 ]

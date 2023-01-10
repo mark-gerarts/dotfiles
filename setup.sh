@@ -22,12 +22,15 @@ install_system_packages() {
     os_specific_packages=(
         "firefox"
         "pass"
+        "batcat"
     )
     if [ $OS = "OpenSUSE" ]; then
         os_specific_packages=(
             "MozillaFirefox"
             "password-store"
             "docker-compose-switch"
+            "bat"
+            "libicu72"
         )
     fi
 
@@ -41,8 +44,19 @@ install_system_packages() {
         fi
     done
 
+    # Setup NPM
     [[ ! -d "$HOME/.nvm" ]] && curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
     node -v &> /dev/null || (nvm install 18 && nvm use --delete-prefix 18)
+
+    # Setup dotnet
+    DOTNET_SDK=dotnet-sdk-7.0
+    if [ $OS = "OpenSUSE" ] && ! rpm -q $DOTNET_SDK > /dev/null; then
+        sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
+        wget https://packages.microsoft.com/config/opensuse/15/prod.repo
+        sudo mv prod.repo /etc/zypp/repos.d/microsoft-prod.repo
+        sudo chown root:root /etc/zypp/repos.d/microsoft-prod.repo
+        sudo zypper install $DOTNET_SDK
+    fi
 }
 
 configure_system() {
@@ -102,19 +116,7 @@ setup_vscode() {
     fi
 }
 
-setup_doom_emacs() {
-    [ -d "$HOME/.doom.d" ] && rm -r "$HOME/.doom.d"
-    ln -s "$SCRIPT_DIR/.doom.d" "$HOME/.doom.d"
-
-    if [ ! -f "$HOME/.emacs.d/bin/doom" ]
-    then
-        git clone --depth 1 https://github.com/doomemacs/doomemacs "$HOME/.emacs.d"
-        "$HOME/.emacs.d/bin/doom" sync
-    fi
-}
-
 install_system_packages
 configure_system
 create_symlinks
 setup_vscode
-setup_doom_emacs

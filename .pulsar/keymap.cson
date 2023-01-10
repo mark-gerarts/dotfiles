@@ -43,6 +43,5 @@
 
 'body':
   'alt-w': 'core:copy'
-  'ctrl-x': 'unset!'
   'ctrl-y': 'core:paste'
   'ctrl-w': 'core:cut'
