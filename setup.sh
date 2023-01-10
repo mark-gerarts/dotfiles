@@ -83,6 +83,10 @@ create_symlinks() {
     ln -sf "$SCRIPT_DIR/.vimrc" "$HOME/.vimrc"
 
     ln -sf "$SCRIPT_DIR/.sbclrc" "$HOME/.sbclrc"
+
+    [ ! -d "$HOME/.pulsar" ] && mkdir "$HOME/.pulsar"
+    ln -sf "$SCRIPT_DIR/.pulsar/config.cson" "$HOME/.pulsar/config.cson"
+    ln -sf "$SCRIPT_DIR/.pulsar/keymap.cson" "$HOME/.pulsar/keymap.cson"
 }
 
 setup_vscode() {

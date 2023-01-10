@@ -34,5 +34,25 @@
     "key": "ctrl+;",
     "command": "-editor.action.commentLine",
     "when": "editorTextFocus && !editorReadonly"
+  },
+  {
+    "key": "alt+e",
+    "command": "calva.evaluateTopLevelFormToCursor",
+    "when": "calva:connected && calva:keybindingsEnabled && editorTextFocus && editorLangId == 'clojure'"
+  },
+  {
+    "key": "shift+alt+enter",
+    "command": "-calva.evaluateTopLevelFormToCursor",
+    "when": "calva:connected && calva:keybindingsEnabled && editorTextFocus && editorLangId == 'clojure'"
+  },
+  {
+    "key": "shift+alt+enter",
+    "command": "calva.evaluateCurrentTopLevelForm",
+    "when": "calva:connected && calva:keybindingsEnabled && editorTextFocus && editorLangId == 'clojure'"
+  },
+  {
+    "key": "alt+enter",
+    "command": "-calva.evaluateCurrentTopLevelForm",
+    "when": "calva:connected && calva:keybindingsEnabled && editorTextFocus && editorLangId == 'clojure'"
   }
 ]
