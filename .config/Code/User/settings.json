@@ -21,7 +21,7 @@
   "editor.cursorStyle": "block",
   "editor.fontFamily": "'Fira Code', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
   "editor.fontLigatures": true,
-  "editor.fontSize": 17,
+  "editor.fontSize": 16,
   "editor.minimap.enabled": false,
   "editor.quickSuggestions": {
     "comments": true
@@ -57,9 +57,9 @@
   "python.formatting.provider": "black",
   "editor.formatOnSave": true,
   "eslint.format.enable": true,
-  "FSharp.pipelineHints.enabled": false,
   "FSharp.inlayHints.parameterNames": false,
   "FSharp.inlayHints.disableLongTooltip": true,
-  "FSharp.inlayHints.enabled": false,
-  "FSharp.inlayHints.typeAnnotations": false
+  "FSharp.inlayHints.typeAnnotations": false,
+  "FSharp.lineLens.enabled": "never",
+  "FSharp.pipelineHints.enabled": false
 }
