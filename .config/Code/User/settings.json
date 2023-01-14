@@ -59,5 +59,7 @@
   "eslint.format.enable": true,
   "FSharp.pipelineHints.enabled": false,
   "FSharp.inlayHints.parameterNames": false,
-  "FSharp.inlayHints.disableLongTooltip": true
+  "FSharp.inlayHints.disableLongTooltip": true,
+  "FSharp.inlayHints.enabled": false,
+  "FSharp.inlayHints.typeAnnotations": false
 }
