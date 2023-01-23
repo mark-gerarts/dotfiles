@@ -1,10 +1,10 @@
 amazonwebservices.aws-toolkit-vscode
-betterthantomorrow.calva
 DavidAnson.vscode-markdownlint
 dbaeumer.vscode-eslint
 Gruntfuggly.todo-tree
 Ionide.Ionide-fsharp
 James-Yu.latex-workshop
+marp-team.marp-vscode
 ms-azuretools.vscode-azurefunctions
 ms-azuretools.vscode-azureresourcegroups
 ms-azuretools.vscode-docker

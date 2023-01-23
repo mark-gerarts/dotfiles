@@ -18,18 +18,17 @@ install_system_packages() {
         "sbcl"
         "rlwrap"
         "chromium"
+        "bat"
     )
     os_specific_packages=(
         "firefox"
         "pass"
-        "batcat"
     )
     if [ $OS = "OpenSUSE" ]; then
         os_specific_packages=(
             "MozillaFirefox"
             "password-store"
             "docker-compose-switch"
-            "bat"
             "libicu72"
         )
     fi
