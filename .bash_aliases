@@ -29,6 +29,8 @@ alias psg="ps aux | grep -v grep | grep -i -e VSZ -e"
 
 alias sbcl="rlwrap sbcl"
 
+alias todos="vim ~/.todos.md"
+
 alias node-repl="noderepl"
 noderepl() {
     FILE_CONTENTS="$(< "$1" )"

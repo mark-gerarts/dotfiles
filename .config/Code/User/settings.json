@@ -63,5 +63,6 @@
   "FSharp.lineLens.enabled": "never",
   "FSharp.pipelineHints.enabled": false,
   "markdown.marp.enableHtml": true,
-  "workbench.editor.enablePreview": false
+  "workbench.editor.enablePreview": false,
+  "FSharp.suggestGitignore": false
 }
