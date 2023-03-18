@@ -68,5 +68,60 @@
     "key": "alt+enter",
     "command": "-fsi.SendSelection",
     "when": "editorFocus && !findWidgetVisible && editorLangId == 'fsharp'"
+  },
+  {
+    "key": "right",
+    "command": "-emacs-mcx.isearchExit"
+  },
+  {
+    "key": "left",
+    "command": "-emacs-mcx.isearchExit"
+  },
+  {
+    "key": "up",
+    "command": "-emacs-mcx.isearchExit"
+  },
+  {
+    "key": "down",
+    "command": "-emacs-mcx.isearchExit"
+  },
+  {
+    "key": "ctrl+b",
+    "command": "-emacs-mcx.isearchExit",
+    "when": "editorFocus && findWidgetVisible"
+  },
+  {
+    "key": "ctrl+p",
+    "command": "-emacs-mcx.isearchExit",
+    "when": "editorFocus && findWidgetVisible"
+  },
+  {
+    "key": "ctrl+n",
+    "command": "-emacs-mcx.isearchExit",
+    "when": "editorFocus && findWidgetVisible"
+  },
+  {
+    "key": "ctrl+a",
+    "command": "-emacs-mcx.isearchExit",
+    "when": "editorFocus && findWidgetVisible"
+  },
+  {
+    "key": "ctrl+e",
+    "command": "-emacs-mcx.isearchExit",
+    "when": "editorFocus && findWidgetVisible"
+  },
+  {
+    "key": "enter",
+    "command": "-emacs-mcx.isearchExit"
+  },
+  {
+    "key": "alt+backspace",
+    "command": "-emacs-mcx.backwardKillWord",
+    "when": "editorTextFocus && !config.emacs-mcx.useMetaPrefixMacCmd && !editorReadonly"
+  },
+  {
+    "key": "alt+backspace",
+    "command": "deleteWordLeft",
+    "when": "editorTextFocus && !config.emacs-mcx.useMetaPrefixMacCmd && !editorReadonly"
   }
 ]
