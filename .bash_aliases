@@ -1,5 +1,3 @@
-HISTCONTROL=ignoredups:erasedups
-
 export PATH=/home/mark/.npm-packages/bin:$PATH
 export PATH=/home/mark/.local/bin:$PATH
 
@@ -68,3 +66,9 @@ function smile_prompt
   [[ $(type -t __vte_prompt_command) == function ]] && __vte_prompt_command
 }
 PROMPT_COMMAND="smile_prompt"
+
+HISTCONTROL=ignoredups:erasedups
+
+# Save to bash history on every prompt.
+shopt -s histappend
+PROMPT_COMMAND="history -a;$PROMPT_COMMAND"
