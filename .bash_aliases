@@ -68,6 +68,8 @@ function smile_prompt
 PROMPT_COMMAND="smile_prompt"
 
 HISTCONTROL=ignoredups:erasedups
+HISTSIZE=20000
+HISTFILESIZE=20000
 
 # Save to bash history on every prompt.
 shopt -s histappend
