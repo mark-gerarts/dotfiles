@@ -73,4 +73,14 @@ HISTFILESIZE=20000
 
 # Save to bash history on every prompt.
 shopt -s histappend
-PROMPT_COMMAND="history -a;$PROMPT_COMMAND"
+# TODO: this doesn't seem to work properly in combination with smile_prompt
+PROMPT_COMMAND="$PROMPT_COMMAND;history -a;"
+
+# Allow bookmarking directories:
+# $ mark @name
+# $ cd @name
+# $ cd @<tab> # List all available bookmarks
+# Credit: https://news.ycombinator.com/item?id=35122780
+mkdir -p ~/.marks/
+export CDPATH=.:~/.marks/
+function mark { ln -sr "$(pwd)" ~/.marks/"$1"; }
