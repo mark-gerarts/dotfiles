@@ -1,0 +1,10 @@
+FROM docker.io/library/ubuntu:22.04
+
+RUN apt-get update && apt-get install -y \
+    git \
+    vim \
+    ripgrep \
+    pass
+
+RUN ln -s /usr/bin/distrobox-host-exec /usr/local/bin/podman
+RUN ln -s /usr/bin/distrobox-host-exec /usr/local/bin/docker
