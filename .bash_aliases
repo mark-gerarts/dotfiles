@@ -17,10 +17,10 @@ alias gti="git"
 alias gut="git"
 alias glg="git log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(blue)- [%an]%C(reset)%C(bold yellow)%d%C(reset)'"
 alias gls="glg"
-alias spp="$HOME/.scripts/spp.sh"
+alias spp="\$HOME/.scripts/spp.sh"
 
-alias poweroff="sudo poweroff"
-alias reboot="sudo reboot"
+alias poweroff="[[ -z \"\${CONTAINER_ID}\" ]] && distrobox-host-exec poweroff || sudo poweroff"
+alias reboot="[[ -z \"\${CONTAINER_ID}\" ]] && distrobox-host-exec reboot || sudo reboot"
 
 alias cclip="xclip -selection clipboard"
 alias psg="ps aux | grep -v grep | grep -i -e VSZ -e"
@@ -28,6 +28,10 @@ alias psg="ps aux | grep -v grep | grep -i -e VSZ -e"
 alias sbcl="rlwrap sbcl"
 
 alias todos="vim ~/.todos.md"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 alias node-repl="noderepl"
 noderepl() {

@@ -2,60 +2,22 @@
 
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 
-OS="debian"
-grep openSUSE /etc/issue > /dev/null && OS="OpenSUSE"
-
 FORCE=false
 [[ $* == *--force* ]] && FORCE=true
 
 install_system_packages() {
-    common_packages=(
-        "git"
-        "ripgrep"
-        "emacs"
+    packages=(
         "docker"
         "docker-compose"
-        "sbcl"
-        "rlwrap"
-        "chromium"
-        "bat"
+        # In general: set up way to install flatpak & apps automatically.
+        # TODO: chromium (flatpak)
+        # TODO: firefox (flatpak)
+        # TODO: pass
     )
-    os_specific_packages=(
-        "firefox"
-        "pass"
-    )
-    if [ $OS = "OpenSUSE" ]; then
-        os_specific_packages=(
-            "MozillaFirefox"
-            "password-store"
-            "docker-compose-switch"
-            "libicu72"
-        )
-    fi
-
-    packages=("${common_packages[@]}" "${os_specific_packages[@]}")
 
     for package in "${packages[@]}"; do
-        if [ $OS = "OpenSUSE" ]; then
-            rpm -q "$package" > /dev/null || sudo zypper in --no-confirm --no-recommends "$package"
-        else
-            dpkg -l "$package" > /dev/null || sudo apt install -y "$package"
-        fi
+        dpkg -l "$package" > /dev/null || sudo apt install -y "$package"
     done
-
-    # Setup NPM
-    [[ ! -d "$HOME/.nvm" ]] && curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
-    node -v &> /dev/null || (nvm install 18 && nvm use --delete-prefix 18)
-
-    # Setup dotnet
-    DOTNET_SDK=dotnet-sdk-7.0
-    if [ $OS = "OpenSUSE" ] && ! rpm -q $DOTNET_SDK > /dev/null; then
-        sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
-        wget https://packages.microsoft.com/config/opensuse/15/prod.repo
-        sudo mv prod.repo /etc/zypp/repos.d/microsoft-prod.repo
-        sudo chown root:root /etc/zypp/repos.d/microsoft-prod.repo
-        sudo zypper install $DOTNET_SDK
-    fi
 }
 
 configure_system() {
@@ -67,11 +29,8 @@ configure_system() {
 }
 
 create_symlinks() {
-    if [ $OS = "OpenSUSE" ]; then
-        ln -sf "$SCRIPT_DIR/.bash_aliases" "$HOME/.alias"
-    else
-        ln -sf "$SCRIPT_DIR/.bash_aliases" "$HOME/.bash_aliases"
-    fi
+    ln -sf "$SCRIPT_DIR/.bash_aliases" "$HOME/.bash_aliases"
+    ln -sf "$SCRIPT_DIR/.bash_aliases" "$HOME/.profile" # For Ubuntu distrobox
 
     ln -sf "$SCRIPT_DIR/.eslintrc.json" "$HOME/.eslintrc.json"
 
@@ -102,6 +61,7 @@ create_symlinks() {
     ln -sf "$SCRIPT_DIR/.pulsar/keymap.cson" "$HOME/.pulsar/keymap.cson"
 }
 
+# TODO: move to dockerfile
 setup_vscode() {
     if code -v &> /dev/null; then
         # Get any extensions that are part of the repo but not yet installed, and install them.

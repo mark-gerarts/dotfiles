@@ -1,10 +1,26 @@
 FROM docker.io/library/ubuntu:22.04
 
-RUN apt-get update && apt-get install -y \
+RUN apt-get update \
+    && apt-get install -y \
+    apt-transport-https \
+    apt-utils \
+    bat \
+    curl \
+    dotnet-sdk-7.0 \
     git \
-    vim \
+    gpg \
+    pass \
     ripgrep \
-    pass
+    vim \
+    wget \
+    # VSCode
+    && wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg \
+    && install -D -o root -g root -m 644 packages.microsoft.gpg /etc/apt/keyrings/packages.microsoft.gpg \
+    && sh -c 'echo "deb [arch=amd64,arm64,armhf signed-by=/etc/apt/keyrings/packages.microsoft.gpg] https://packages.microsoft.com/repos/code stable main" > /etc/apt/sources.list.d/vscode.list' \
+    && rm -f packages.microsoft.gpg \
+    && apt-get update \
+    && apt-get install code -y \
+    && curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
 
-RUN ln -s /usr/bin/distrobox-host-exec /usr/local/bin/podman
-RUN ln -s /usr/bin/distrobox-host-exec /usr/local/bin/docker
+RUN ln -s /usr/bin/distrobox-host-exec /usr/local/bin/podman \
+    && ln -s /usr/bin/distrobox-host-exec /usr/local/bin/docker

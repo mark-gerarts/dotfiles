@@ -1,1 +1,1 @@
-FROM distrobox-img-personal
+FROM distrobox-img-base:latest
