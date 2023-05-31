@@ -19,8 +19,8 @@ alias glg="git log --graph --abbrev-commit --decorate --date=relative --format=f
 alias gls="glg"
 alias spp="\$HOME/.scripts/spp.sh"
 
-alias poweroff="[[ -z \"\${CONTAINER_ID}\" ]] && distrobox-host-exec poweroff || sudo poweroff"
-alias reboot="[[ -z \"\${CONTAINER_ID}\" ]] && distrobox-host-exec reboot || sudo reboot"
+alias poweroff="[[ -z \"${CONTAINER_ID}\" ]] && sudo poweroff || distrobox-host-exec /sbin/poweroff"
+alias reboot="[[ -z \"${CONTAINER_ID}\" ]] && sudo reboot || distrobox-host-exec /sbin/reboot"
 
 alias cclip="xclip -selection clipboard"
 alias psg="ps aux | grep -v grep | grep -i -e VSZ -e"
