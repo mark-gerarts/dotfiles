@@ -15,8 +15,22 @@ Subsequent runs do not require `--force`.
 
 ## VSCode
 
-To sync VSCode extensions:
+To export VSCode extensions:
 
 ```bash
 code --list-extensions | sort > .distrobox/extensions.list
+```
+
+## Flatpaks
+
+To export installed flatpak apps:
+
+```bash
+flatpak list --app | awk -F '\t' '{print $2}' > flatpak-apps.list
+```
+
+To install all synced apps:
+
+```bash
+cat flatpak-apps.list | xargs -n 1 flatpak install
 ```

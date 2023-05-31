@@ -9,15 +9,21 @@ install_system_packages() {
     packages=(
         "docker"
         "docker-compose"
-        # In general: set up way to install flatpak & apps automatically.
-        # TODO: chromium (flatpak)
-        # TODO: firefox (flatpak)
-        # TODO: pass
+        "flatpak"
+        "gnome-software-plugin-flatpak"
     )
 
     for package in "${packages[@]}"; do
         dpkg -l "$package" > /dev/null || sudo apt install -y "$package"
     done
+
+    flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+}
+
+install_flatpaks() {
+    if flatpak --version &> /dev/null; then
+        cat "$SCRIPT_DIR/flatpak-apps.list" | xargs -n 1 flatpak install
+    fi
 }
 
 configure_system() {
@@ -65,3 +71,4 @@ create_symlinks() {
 install_system_packages
 configure_system
 create_symlinks
+install_flatpaks
