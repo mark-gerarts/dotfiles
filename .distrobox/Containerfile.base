@@ -1,12 +1,12 @@
-FROM docker.io/library/ubuntu:22.04
+FROM docker.io/library/debian:testing
 
+# Package installs.
 RUN apt-get update \
     && apt-get install -y \
     apt-transport-https \
     apt-utils \
     bat \
     curl \
-    dotnet-sdk-7.0 \
     git \
     gpg \
     pass \
@@ -14,13 +14,21 @@ RUN apt-get update \
     vim \
     wget \
     # VSCode
-    && wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg \
-    && install -D -o root -g root -m 644 packages.microsoft.gpg /etc/apt/keyrings/packages.microsoft.gpg \
-    && sh -c 'echo "deb [arch=amd64,arm64,armhf signed-by=/etc/apt/keyrings/packages.microsoft.gpg] https://packages.microsoft.com/repos/code stable main" > /etc/apt/sources.list.d/vscode.list' \
-    && rm -f packages.microsoft.gpg \
-    && apt-get update \
-    && apt-get install code -y \
-    && curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
+    && wget -O code.deb https://update.code.visualstudio.com/latest/linux-deb-x64/stable \
+    && apt-get install -y ./code.deb \
+    # NPM
+    && curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash \
+    # Dotnet
+    && wget https://packages.microsoft.com/config/debian/11/packages-microsoft-prod.deb -O packages-microsoft-prod.deb \
+    && dpkg -i packages-microsoft-prod.deb \
+    && rm packages-microsoft-prod.deb \
+    && apt-get update && apt-get install -y dotnet-sdk-7.0
 
+# Set up VSCode extensions
+# TODO: test this, not sure if it works with root vs my own user.
+COPY ./extensions.list .
+RUN cat extensions.list | xargs -n 1 code --no-sandbox --user-data-dir=/home/mark/.config/Code --install-extension
+
+# Allow host docker/podman interaction
 RUN ln -s /usr/bin/distrobox-host-exec /usr/local/bin/podman \
     && ln -s /usr/bin/distrobox-host-exec /usr/local/bin/docker

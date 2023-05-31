@@ -25,12 +25,13 @@ configure_system() {
         sudo visudo -c -f "$SCRIPT_DIR/etc/sudoers.d/custom-sudoers" > /dev/null \
             && sudo cp "$SCRIPT_DIR/etc/sudoers.d/custom-sudoers" /etc/sudoers.d/custom-sudoers \
             && sudo chmod 440 /etc/sudoers.d/custom-sudoers
+
+        echo "DefaultTimeoutStopSec=10s" | sudo tee -a /etc/systemd/user.conf
     fi
 }
 
 create_symlinks() {
-    ln -sf "$SCRIPT_DIR/.bash_aliases" "$HOME/.bash_aliases"
-    ln -sf "$SCRIPT_DIR/.bash_aliases" "$HOME/.profile" # For Ubuntu distrobox
+    ln -sf "$SCRIPT_DIR/.profile" "$HOME/.profile"
 
     ln -sf "$SCRIPT_DIR/.eslintrc.json" "$HOME/.eslintrc.json"
 
@@ -61,21 +62,6 @@ create_symlinks() {
     ln -sf "$SCRIPT_DIR/.pulsar/keymap.cson" "$HOME/.pulsar/keymap.cson"
 }
 
-# TODO: move to dockerfile
-setup_vscode() {
-    if code -v &> /dev/null; then
-        # Get any extensions that are part of the repo but not yet installed, and install them.
-        INSTALLED_EXTENSIONS=$(code --list-extensions | sort)
-        ALL_EXTENSIONS=$(sort "$SCRIPT_DIR/.config/Code/User/extensions.list")
-        EXTENSIONS_TO_INSTALL=$(comm -13 <(echo "$INSTALLED_EXTENSIONS") <(echo "$ALL_EXTENSIONS"))
-        [ -n "${EXTENSIONS_TO_INSTALL// }" ] && echo "$EXTENSIONS_TO_INSTALL" | xargs -n 1 code --install-extension
-
-        # Update the extensions list if there are any extensions installed but not yet part of the repo.
-        code --list-extensions > "$SCRIPT_DIR/.config/Code/User/extensions.list"
-    fi
-}
-
 install_system_packages
 configure_system
 create_symlinks
-setup_vscode
