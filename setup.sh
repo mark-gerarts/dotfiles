@@ -11,6 +11,9 @@ install_system_packages() {
         "docker-compose"
         "flatpak"
         "gnome-software-plugin-flatpak"
+        "vim"
+        "git"
+        "distrobox"
     )
 
     for package in "${packages[@]}"; do
@@ -22,7 +25,7 @@ install_system_packages() {
 
 install_flatpaks() {
     if flatpak --version &> /dev/null; then
-        cat "$SCRIPT_DIR/flatpak-apps.list" | xargs -n 1 flatpak install
+        cat "$SCRIPT_DIR/flatpak-apps.list" | xargs -n 1 flatpak install -y
     fi
 }
 
@@ -37,7 +40,7 @@ configure_system() {
 }
 
 create_symlinks() {
-    ln -sf "$SCRIPT_DIR/.profile" "$HOME/.profile"
+    ln -sf "$SCRIPT_DIR/.bash_aliases" "$HOME/.bash_aliases"
 
     ln -sf "$SCRIPT_DIR/.eslintrc.json" "$HOME/.eslintrc.json"
 

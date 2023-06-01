@@ -5,8 +5,8 @@ docker build -f Containerfile.base -t distrobox-img-base .
 
 # Since --pull doesn't work with local images, force remove the old ones.
 # TODO: check if this is needed.
-(distrobox stop spiral && distrobox rm spiral) > /dev/null || true
-(distrobox stop helix && distrobox rm helix) > /dev/null || true
+(distrobox stop spiral -Y && distrobox rm spiral -Y) > /dev/null || true
+(distrobox stop helix -Y && distrobox rm helix -Y) > /dev/null || true
 docker image rm distrobox-img-personal:latest || true
 docker image rm distrobox-img-work:latest || true
 
