@@ -17,7 +17,7 @@ install_system_packages() {
     )
 
     for package in "${packages[@]}"; do
-        dpkg -l "$package" > /dev/null || sudo apt install -y "$package"
+        dpkg -s "$package" > /dev/null || sudo apt install -y "$package"
     done
 
     flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
@@ -41,6 +41,7 @@ configure_system() {
 
 create_symlinks() {
     ln -sf "$SCRIPT_DIR/.bash_aliases" "$HOME/.bash_aliases"
+    ln -sf "$SCRIPT_DIR/.bash_aliases" "$HOME/.profile"
 
     ln -sf "$SCRIPT_DIR/.eslintrc.json" "$HOME/.eslintrc.json"
 

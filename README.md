@@ -39,8 +39,14 @@ Gnome setup:
 - Terminal
   - Shortcuts -> Switch to next/previous -> Alt left/right
   - Profiles -> Font size to 12; Color scheme to dark; disable limit scrollback
+  - Clone default profile, set name to "distrobox", set "distrobox enter X" as command
 - Settings
   - Multitasking -> Disable hot corner
+  - Keyboard -> shortcuts
+    - Home folder Ctrl+E
+    - gnome-terminal Ctrl+Alt+T "gnome-terminal --profile Distrobox"
+    - gnome-terminal Super+Enter "gnome-terminal"
+    - "Switch windows" to Alt-Tab
 - Extension manager
   - Blur my shell
   - Dash to dock
