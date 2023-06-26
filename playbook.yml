@@ -1,0 +1,147 @@
+- hosts: localhost
+  become: yes
+  vars:
+    - username: 'mark'
+
+  tasks:
+    - name: Install system packages
+      apt:
+        name:
+          - bat
+          - ca-certificates
+          - curl
+          - docker
+          - docker-compose
+          - dotnet-sdk-7.0
+          - flatpak
+          - git
+          - gnome-software-plugin-flatpak
+          - gnupg
+          - gpg
+          - pass
+          - ripgrep
+          - vim
+          - wget
+        state: latest
+
+    - name: Add the flathub flatpak repository
+      community.general.flatpak_remote:
+        name: flathub
+        state: present
+        flatpakrepo_url: https://flathub.org/repo/flathub.flatpakrepo
+        method: system
+
+    # Run `flatpak list --app` to see installed apps.
+    - name: Install flatpaks
+      community.general.flatpak:
+        name:
+          - com.mattjakeman.ExtensionManager
+          - com.slack.Slack
+          - org.chromium.Chromium
+          - org.mozilla.firefox
+          - org.gnome.Boxes
+          - rest.insomnia.Insomnia
+
+    - name: Check out dotfiles repo
+      git:
+        repo: git@github.com:mark-gerarts/dotfiles.git
+        dest: "/home/{{ username }}/dotfiles"
+        accept_hostkey: yes
+        key_file: "/home/{{ username }}/.ssh/id_rsa"
+      delegate_to: localhost
+      become: no
+
+    - name: Create dotfile symlinks
+      file:
+        src: "/home/{{ username }}/dotfiles/{{ item }}"
+        dest: "/home/{{ username }}/{{ item }}"
+        state: link
+        force: true
+      loop:
+        - .config/Code/User/settings.json
+        - .config/Code/User/keybindings.json
+        - .config/bat
+        - .scripts
+        - .bash_aliases
+        - .eslintrc.json
+        - .gitconfig
+        - .pylintrc
+        - .sbclrc
+        - .vimrc
+
+    - name: Add user to docker group
+      user:
+        name: "{{ username }}"
+        groups: docker,sudo
+
+    # !! Always check `sudo visudo -c -f <custom sudoers>` before applying
+    # changes.
+    - name: "Configure sudoers"
+      copy:
+        src: "/home/{{ username }}/dotfiles/etc/sudoers.d/custom-sudoers"
+        dest:  /etc/sudoers.d/custom-sudoers
+        owner: root
+        group: root
+        mode: '0440'
+
+    - name: Setup Node
+      become: no
+      block:
+        - name: Install nvm
+          # Update the version when needed.
+          ansible.builtin.shell: >
+            curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.39.3/install.sh | bash
+          args:
+            executable: /bin/bash
+            chdir: "/home/{{ username }}"
+            creates: "/home/{{ username }}/.nvm/nvm.sh"
+
+        - name: Setup .profile
+          ansible.builtin.lineinfile:
+            path: "/home/{{ username }}/.profile"
+            line: source ~/.nvm/nvm.sh
+            create: yes
+
+        - name: Install node
+          ansible.builtin.shell: |
+            . /home/{{ username }}/.nvm/nvm.sh && nvm install --lts
+          args:
+            executable: /bin/bash
+            chdir: "/home/{{ username }}"
+            creates: "/home/{{ username }}/.nvm/versions/node"
+
+  roles:
+    - role: gantsign.visual-studio-code
+      # Use -e skip_vscode=1 to skip vscode. Useful while debugging because it
+      # takes a long time to sync extensions.
+      when: skip_vscode is not defined
+      users:
+        - username: "{{ username }}"
+          # Run `code --list-extensions | sort` to see installed extensions.
+          visual_studio_code_extensions:
+            - amazonwebservices.aws-toolkit-vscode
+            - DavidAnson.vscode-markdownlint
+            - dbaeumer.vscode-eslint
+            - Gruntfuggly.todo-tree
+            - Ionide.Ionide-fsharp
+            - James-Yu.latex-workshop
+            - marp-team.marp-vscode
+            - ms-azuretools.vscode-azurefunctions
+            - ms-azuretools.vscode-azureresourcegroups
+            - ms-azuretools.vscode-docker
+            - ms-dotnettools.csharp
+            - ms-python.isort
+            - ms-python.pylint
+            - ms-python.python
+            - ms-python.vscode-pylance
+            - ms-toolsai.jupyter
+            - ms-toolsai.jupyter-keymap
+            - ms-toolsai.jupyter-renderers
+            - ms-toolsai.vscode-jupyter-cell-tags
+            - ms-toolsai.vscode-jupyter-slideshow
+            - ms-vscode.azure-account
+            - stkb.rewrap
+            - timonwong.shellcheck
+            - tuttieee.emacs-mcx
+            - valentjn.vscode-ltex
+            - yzhang.markdown-all-in-one
