@@ -1,0 +1,81 @@
+- hosts: localhost
+  become: yes
+  vars:
+    - username: 'mark'
+
+  tasks:
+    - name: "Install system packages"
+      apt:
+        name:
+          - bat
+          - curl
+          - dotnet-sdk-7.0
+          - flatpak
+          - git
+          - gnome-software-plugin-flatpak
+          - gpg
+          - pass
+          - ripgrep
+          - vim
+          - wget
+        state: latest
+        
+    - name: "Add the flathub flatpak repository"
+      community.general.flatpak_remote:
+        name: flathub
+        state: present
+        flatpakrepo_url: https://flathub.org/repo/flathub.flatpakrepo
+        method: system
+        
+    - name: "Install flatpaks"
+      community.general.flatpak:
+        name:
+          - com.mattjakeman.ExtensionManager
+          - com.slack.Slack
+          - org.gnome.Boxes
+          - org.mozilla.firefox
+          - rest.insomnia.Insomnia
+        
+    - name: "Check out dotfiles"
+      git:
+        repo: git@github.com:mark-gerarts/dotfiles.git
+        dest: "/home/{{ username }}/dotfiles"
+        accept_hostkey: yes
+        key_file: "/home/{{ username }}/.ssh/id_rsa"
+      delegate_to: localhost
+      become: no
+
+  roles:
+    - role: gantsign.visual-studio-code
+      when: false # Remove later
+      users: 
+        - username: "{{ username }}"
+          visual_studio_code_extensions:
+            - amazonwebservices.aws-toolkit-vscode
+            - DavidAnson.vscode-markdownlint
+            - dbaeumer.vscode-eslint
+            - Gruntfuggly.todo-tree
+            - Ionide.Ionide-fsharp
+            - James-Yu.latex-workshop
+            - marp-team.marp-vscode
+            - ms-azuretools.vscode-azurefunctions
+            - ms-azuretools.vscode-azureresourcegroups
+            - ms-azuretools.vscode-docker
+            - ms-dotnettools.csharp
+            - ms-python.isort
+            - ms-python.pylint
+            - ms-python.python
+            - ms-python.vscode-pylance
+            - ms-toolsai.jupyter
+            - ms-toolsai.jupyter-keymap
+            - ms-toolsai.jupyter-renderers
+            - ms-toolsai.vscode-jupyter-cell-tags
+            - ms-toolsai.vscode-jupyter-slideshow
+            - ms-vscode.azure-account
+            - stkb.rewrap
+            - timonwong.shellcheck
+            - tuttieee.emacs-mcx
+            - valentjn.vscode-ltex
+            - yzhang.markdown-all-in-one
+
+

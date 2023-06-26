@@ -1,13 +1,33 @@
 # Dotfiles setup
 
-Dotfiles & system config with included setup script. Usage:
+## Initial setup
 
-```sh
-cd $HOME \
-  && git clone git@github.com-personal:mark-gerarts/dotfiles-ubuntu.git dotfiles \
-  && cd dotfiles \
-  && chmod +x setup.sh \
-  && ./setup.sh --force
+Install Ansible:
+
+```
+apt install ansible
 ```
 
-Subsequent runs do not require `--force`.
+Install the required plugins:
+
+```
+ansible-galaxy install gantsign.visual-studio-code \
+  && ansible-galaxy collection install community.general
+```
+
+First run of Ansible:
+
+```
+curl https://raw.githubusercontent.com/mark-gerarts/dotfiles/master/playbook.yml \
+  | ansible-playbook --ask-become-pass
+```
+
+This will install the dotfiles repo to `/home/mark/dotfiles`, where
+subequent runs can be started.
+
+## Usage
+
+```
+ansible-playbook /home/mark/dotfiles/playbook.yml --ask-become-pass
+```
+
