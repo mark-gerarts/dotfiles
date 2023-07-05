@@ -30,15 +30,20 @@ alias sbcl="rlwrap sbcl"
 
 alias todos="vim ~/.todos.md"
 
+# Node
 alias node-repl="noderepl"
 noderepl() {
     FILE_CONTENTS="$(< "$1" )"
     node -i -e "$FILE_CONTENTS"
 }
 
+# Android
 export ANDROID_SDK_ROOT=$HOME/Android/Sdk
 export PATH=$PATH:$ANDROID_SDK_ROOT/emulator
 export PATH=$PATH:$ANDROID_SDK_ROOT/platform-tools
+
+# Microsoft...
+export FUNCTIONS_CORE_TOOLS_TELEMETRY_OPTOUT=1
 
 RED='\[\e[0;31m\]'
 GREEN='\[\e[0;32m\]'
