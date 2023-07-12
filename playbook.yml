@@ -10,7 +10,6 @@
           - bat
           - ca-certificates
           - curl
-          - docker
           - dotnet-sdk-7.0
           - flatpak
           - git
@@ -24,7 +23,7 @@
           - wget
         state: latest
 
-    - name: Install docker compose (workaround until in official repo)
+    - name: Install docker (workaround until in official repo)
       block:
         - name: Add Docker's GPG key
           shell: |
@@ -47,9 +46,13 @@
           apt: update_cache=yes
           changed_when: false
 
-        - name: Install docker compose
+        - name: Install docker
           apt:
             name:
+              - docker-ce
+              - docker-ce-cli
+              - containerd.io
+              - docker-buildx-plugin
               - docker-compose-plugin
             state: latest
 
