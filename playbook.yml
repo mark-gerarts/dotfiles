@@ -21,6 +21,7 @@
           - ripgrep
           - vim
           - wget
+          - wl-clipboard # Pass requirement
         state: latest
 
     - name: Install docker (workaround until in official repo)
