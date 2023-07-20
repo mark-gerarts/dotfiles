@@ -30,6 +30,8 @@ alias sbcl="rlwrap sbcl"
 
 alias todos="vim ~/.todos.md"
 
+alias prettyjson="python3 -m json.tool"
+
 # Node
 alias node-repl="noderepl"
 noderepl() {
