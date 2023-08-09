@@ -46,6 +46,7 @@ export PATH=$PATH:$ANDROID_SDK_ROOT/platform-tools
 
 # Microsoft...
 export FUNCTIONS_CORE_TOOLS_TELEMETRY_OPTOUT=1
+export DOTNET_CLI_TELEMETRY_OPTOUT=1
 
 RED='\[\e[0;31m\]'
 GREEN='\[\e[0;32m\]'
