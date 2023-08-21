@@ -16,6 +16,9 @@
 	default = simple
 	autoSetupRemote = true
 
+[pull]
+	rebase = true
+
 [tag]
 	sort = -version:refname
 

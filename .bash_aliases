@@ -1,5 +1,6 @@
 export PATH=/home/mark/.npm-packages/bin:$PATH
 export PATH=/home/mark/.local/bin:$PATH
+export PATH=/home/mark/.nimble/bin:$PATH
 
 alias ll="ls -vlAh --color=auto --group-directories-first"
 alias ..="cd .."
@@ -52,6 +53,7 @@ RED='\[\e[0;31m\]'
 GREEN='\[\e[0;32m\]'
 BYELLOW='\[\e[1;33m\]'
 BWHITE='\[\e[1;37m\]'
+
 function smile_prompt
 {
   if [ "$?" -eq "0" ]; then
