@@ -1,0 +1,4 @@
+# Make the lock button a forward delete
+# https://www.reddit.com/r/linux_gaming/comments/nypsi1/updated_guide_to_remapping_keys_on_linux_using/
+evdev:name:Magic Keyboard:*
+  KEYBOARD_KEY_c019e=delete

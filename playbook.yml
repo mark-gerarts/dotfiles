@@ -120,6 +120,18 @@
         group: root
         mode: '0440'
 
+    - name: "Add Apple keyboard config"
+      copy:
+        src: "{{ item.src }}"
+        dest: "{{ item.dest }}"
+        owner: root
+        group: root
+      loop:
+        - src: "/home/{{ username }}/dotfiles/etc/modprobe.d/hid_apple.conf"
+          dest: /etc/modprobe.d/hid_apple.conf
+        - src: "/home/{{ username }}/dotfiles/etc/udev/hwdb.d/99-apple-magic-keyboard.hwdb"
+          dest: /etc/udev/hwdb.d/99-apple-magic-keyboard.hwdb
+
     - name: Setup Node
       become: no
       block:
