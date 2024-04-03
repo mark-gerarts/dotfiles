@@ -11,10 +11,13 @@ alias cd..="cd .."
 
 alias docker-composer="docker compose"
 alias docker-compose="docker compose"
+alias k="kubectl"
+alias kdebug="kubectl run -i --tty --rm debug --image=arunvelsriram/utils --restart=Never -- bash"
 alias sl="ls"
 alias it="git"
 alias gti="git"
 alias gut="git"
+alias code.="code ."
 
 alias glg="git log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(blue)- [%an]%C(reset)%C(bold yellow)%d%C(reset)'"
 alias gls="glg"
@@ -25,6 +28,7 @@ alias poweroff="sudo poweroff"
 alias reboot="sudo reboot"
 
 alias cclip="xclip -selection clipboard"
+alias bat="batcat"
 alias psg="ps aux | grep -v grep | grep -i -e VSZ -e"
 
 alias sbcl="rlwrap sbcl"
