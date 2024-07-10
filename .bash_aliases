@@ -76,7 +76,7 @@ function smile_prompt
   RC="${BWHITE}"
   #default color
   DF='\[\e[0m\]'
-  PS1="[${UC}\u${RC}@${HC}\h${RC}:\w${DF}] ${SC}${DF} "
+  PS1="[${UC}\u${RC}@${HC}\h${RC}:\w${DF}] ${SC}${DF}\n\$ "
 
   [[ $(type -t __vte_prompt_command) == function ]] && __vte_prompt_command
 }
