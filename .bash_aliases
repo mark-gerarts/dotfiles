@@ -17,6 +17,7 @@ alias sl="ls"
 alias it="git"
 alias gti="git"
 alias gut="git"
+alias got="git"
 alias code.="code ."
 
 alias glg="git log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(blue)- [%an]%C(reset)%C(bold yellow)%d%C(reset)'"
