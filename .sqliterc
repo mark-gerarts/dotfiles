@@ -2,4 +2,4 @@
 .headers on
 .separator ROW "\n"
 .nullvalue NULL
-.prompt "\033[1;32m>>> \033[0m"
+.prompt "\n>>> "
