@@ -38,6 +38,8 @@ alias todos="vim ~/.todos.md"
 
 alias prettyjson="python3 -m json.tool"
 
+alias diff="diff --color"
+
 # Node
 alias node-repl="noderepl"
 noderepl() {
