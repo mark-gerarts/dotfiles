@@ -39,3 +39,6 @@
 
 [diff]
 	colorMoved = default
+
+[help]
+	autocorrect = prompt
