@@ -55,7 +55,8 @@ ansible-playbook /home/mark/dotfiles/playbook.yml --ask-become-pass
   - Extension manager
     - Blur my shell
     - Dash to dock
-  - Dash to dock
+    - Caffeine
+    - PaperWM?
     - Transparent
     - Make smaller
     - Remove trash icon, unpin defaults
