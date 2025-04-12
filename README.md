@@ -1,5 +1,8 @@
 # Dotfiles
 
+NOTE: this is for Debian, which I don't use at the moment; current dotfiles
+live at [/m](https://github.com/mark-gerarts/m).
+
 ## Initial setup
 
 Install Ansible:
